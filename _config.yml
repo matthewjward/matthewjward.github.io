@@ -56,7 +56,7 @@ social-network-links:
   linkedin: matt-ward-31799265
 
 
-google_analytics: "G-VEVCP5HQT4"
+gtag: "G-VEVCP5HQT4"
 
 # Build settings
 remote_theme: daattali/beautiful-jekyll@5.0.0
