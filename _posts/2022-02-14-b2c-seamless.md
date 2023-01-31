@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 'Taking Azure AD B2C ‘Seamless Migration’ for a spin'
+cover-img: "/assets/images/seamless-migration/cover.jpeg"
+thumbnail-img: ""
 tags: IDaaS b2c Identity Auth
 ---
 
