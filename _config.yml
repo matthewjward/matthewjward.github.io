@@ -54,7 +54,9 @@ social-network-links:
   github: matthewjward
   twitter: mattyjward
   linkedin: matt-ward-31799265
+  rss: true 
 
+rss-description: Technical innovation applied to real-world business problems
 
 gtag: "G-VEVCP5HQT4"
 
