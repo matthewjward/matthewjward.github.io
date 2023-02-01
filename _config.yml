@@ -58,6 +58,8 @@ social-network-links:
 
 gtag: "G-VEVCP5HQT4"
 
+timezone: "Australia/Perth"
+
 # Build settings
 remote_theme: daattali/beautiful-jekyll@5.0.0
 plugins:
