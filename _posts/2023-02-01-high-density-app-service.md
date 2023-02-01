@@ -24,7 +24,7 @@ We could scale out if we are hitting CPU limits and just need to balance the tra
 
 We could scale up, but this is just kicking the problem down the road. App Service Plans come in a few sizes (i.e. Small, Medium, Large), but there is a limit and we can't scale up forever.
 
-We could create a second App Service Plan, and start putting new services on there, but this creates a whole bunch of other problems that I'd prefer to avoid. How to decide which App Services go on which App Service Plan? You could just put the new ones on the new App Service Plan, but wouldn't you prefer to scale certain services together, etc. Then there are other concerns such as virtual network integration... wouldn't it be much nicer if you could stay within the one App Service Plan?
+We could create a second App Service Plan, and start putting new services on there, but this creates a whole bunch of other problems that we'd prefer to avoid. How to decide which App Services go on which App Service Plan? We could just put the new ones on the new App Service Plan, but wouldn't we prefer to scale certain services together, etc. Then there are other concerns such as virtual network integration... wouldn't it be much nicer if we could stay within the one App Service Plan?
 
 Then there is one final option, something Microsoft call ["High-density hosting on Azure App Service using per-app scaling"](https://learn.microsoft.com/en-us/azure/app-service/manage-scale-per-app)!
 
@@ -62,20 +62,20 @@ Looking at the App Service Plan in Azure Monitor showed that Azure had only crea
 
 Something was clearly wrong.
 
-Digging back into the docs, there is a section at the bottom labelled "Recommended configuration for high-density hosting" that states
+Digging back into the docs, there is a section at the bottom labelled ["Recommended configuration for high-density hosting"](https://learn.microsoft.com/en-us/azure/app-service/manage-scale-per-app#recommended-configuration-for-high-density-hosting) that states
 
 >Follow these steps to configure high-density hosting for your apps:
 >
 >1. Designate an App Service plan as the high-density plan and scale it out to the desired capacity.
 >1. Set the PerSiteScaling flag to true on the App Service plan.
 
-Following this steps did lead to having all instances activated, and App Services were then spread evenly across instances. However, needing to know the desired capacity up front is a pretty big turn-off, I don't think that that is how this cloud thing is meant to work at all! How would it handle scaling out my App Service Plan? Time to find out!
+Following these steps did lead to having all instances activated, and App Services were then spread evenly across instances. However, needing to know the desired capacity up front is a pretty big turn-off, I don't think that that is how this cloud thing is meant to work at all! How would it handle scaling out my App Service Plan? Time to find out!
 
 ## Experiment #2 - Scaling Out
 
  Next I wanted to see if scaling-out an App Service Plan would result in the existing App Services being rebalanced across all instances.
 
-Confidence was low after Experiment #1, but the following line in the docs gave me hope - 
+Confidence was low after Experiment #1, but the following line in the [docs](https://learn.microsoft.com/en-us/azure/app-service/manage-scale-per-app) gave me hope - 
 
 >Applications are rebalanced only when instances are added or removed from the App Service plan.
 
