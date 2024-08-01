@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Enabling CitizenOps for Integration Workloads with Azure AI Services "
+cover-img: "/assets/images/citizen-ops/cover.png"
+thumbnail-img: ""
+tags: genai logicapps
+---
+
+We build a lot of integration solutions focused on moving data from one system to another.
+
+Often this is transitory in nature, an integration is about the movement of data.
+
+A failed integration does not leave a particular system in an error state, but it likely does leave your organisation overall in an error state.
+
+How do we investigate? I envisioned an interface where a business user coudl ask a question such as "Why didn't employee Bob Smith make it to System X?"
+
+Today we would usually build an integration dashboard
+
+Very often when an integration fails, it is a data problem. The receiving system may have different validation requirements on a field to the sending system, and what was acceptable to one is not acceptble to the other. In my experience data isses are more common than more technical issues, such as networking or authenitcation errors.
+
+Given that these errors are often better resolved by a business user than a technical person, is there a way to surface them in a more suitable fashion.
+
+
+Based on the popular Retrieval Augmented Generation pattern, 
+
+We generally build integration using Azure Logic Apps. The Logic App team recently announced new connectors for Azure AI Search and Azure OpenAI. This opened the door to creating a new Logic app workflow, which could then easily be inserted into our existing workflows.
+
+The new workflow leveraged Azure AI Search to store each request to the target system, as well as the respone from the target system.
+
+The other half of the solution is the 'retrieval' workload. The user enters their question, 
