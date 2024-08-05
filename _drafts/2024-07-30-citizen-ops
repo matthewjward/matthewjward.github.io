@@ -6,25 +6,42 @@ thumbnail-img: ""
 tags: genai logicapps
 ---
 
-We build a lot of integration solutions focused on moving data from one system to another.
+We build a lot of integration solutions. These solutions  focus on moving data from one system to another. Often this is transitory in nature, an integration is about the movement of data, rather than about making a change to a system.
 
-Often this is transitory in nature, an integration is about the movement of data.
+![System integration](/assets/images/citizen-ops/integration.png)
 
-A failed integration does not leave a particular system in an error state, but it likely does leave your organisation overall in an error state.
+A failed integration does not leave a particular system in an error state, but it likely does leave your overall organisation in more abstract error state. How do we become aware that a failed integration has happened? How do we investigate and remedy the situation?
 
-How do we investigate? I envisioned an interface where a business user coudl ask a question such as "Why didn't employee Bob Smith make it to System X?"
+Today we would usually build a very technical integration dashboard. An operations engineer would use the dashboard to dig into the issue, understand what had caused the failure, and then pass that information on to a business user where necessary.
 
-Today we would usually build an integration dashboard
+![Integration dashboard](/assets/images/citizen-ops/integration-dashboard.png)
 
-Very often when an integration fails, it is a data problem. The receiving system may have different validation requirements on a field to the sending system, and what was acceptable to one is not acceptble to the other. In my experience data isses are more common than more technical issues, such as networking or authenitcation errors.
+
+## Can we do better?
+
+Very often when an integration fails, it is a data problem. The receiving system may have different validation requirements on a field to the sending system, and what was acceptable to one is not acceptble to the other. In my experience data isses are for more common than more technical issues, such as networking or authenitcation errors.
 
 Given that these errors are often better resolved by a business user than a technical person, is there a way to surface them in a more suitable fashion.
 
+I envisioned an interface where a business user could ask a question such as "Why didn't employee Bob Smith make it to System X?"
 
-Based on the popular Retrieval Augmented Generation pattern, 
+![The goal](/assets/images/citizen-ops/the-goal.png)
+
+
+## So how does it work?
+
+The implementation uses the popular Retrieval Augmented Generation (RAG) pattern, utilising the Azure AI Search and Azure OpenAI services.
+
+![RAG pattern](/assets/images/citizen-ops/rag.png)
 
 We generally build integration using Azure Logic Apps. The Logic App team recently announced new connectors for Azure AI Search and Azure OpenAI. This opened the door to creating a new Logic app workflow, which could then easily be inserted into our existing workflows.
 
+![Ingestion flow](/assets/images/citizen-ops/ingestion-flow.png)
+
 The new workflow leveraged Azure AI Search to store each request to the target system, as well as the respone from the target system.
 
-The other half of the solution is the 'retrieval' workload. The user enters their question, 
+![Calling flow](/assets/images/citizen-ops/calling-flow.png)
+
+The other half of the solution is the 'retrieval' workload. This flow takes the users question, vectorises it, retrieves data from Azure AI Search, then passes it all in to Azure OpenAI to generate user friendly content. This flow does not need to be built using a Logic App, but here I wanted to test out the new connectors.
+
+![Retrieval flow](/assets/images/citizen-ops/retrieval-flow.png)
