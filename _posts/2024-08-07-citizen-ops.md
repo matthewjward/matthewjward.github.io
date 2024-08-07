@@ -39,9 +39,9 @@ In this pattern, a company's data is initially loaded into a vector database, wh
 
 ![RAG pattern](/assets/images/citizen-ops/rag.png)
 
-We generally build integrations using Azure Logic Apps. The Logic App team recently announced new connectors for Azure AI Search and Azure OpenAI. This opened the door to easily extending current integration implementations for our users, without needig to build entirely new AI solutions.
+We generally build integrations using Azure Logic Apps. The Logic App team recently announced new connectors for Azure AI Search and Azure OpenAI. This opened the door to easily extending current integration implementations for our customers, without needing to build entirely new AI solutions.
 
-I created a new, reusable ingestion workflow. The workflow receives a small payload containing the request and response information from an attempted system integration, as well as some accompanying metadata that provides context to help improve quality of the results. This new workflow leveraged Azure OpenAI to 'vectorise' the payload, and Azure AI Search to store the payload and its vector.
+I created a new, reusable ingestion workflow. The workflow receives a small payload containing the request and response information from an attempted system integration, as well as some accompanying metadata that provides context to help improve the quality of the results. This new workflow leveraged Azure OpenAI to 'vectorise' the payload, and Azure AI Search to store the payload and its vector.
 
 ![Ingestion flow](/assets/images/citizen-ops/ingestion-flow.png)
 
@@ -55,6 +55,8 @@ The other half of the solution is the retrieval workload. This flow takes the us
 
 ![Retrieval flow](/assets/images/citizen-ops/retrieval-flow.png)
 
+The retrieval flow can then be called from the simple web app shown above, enable citizen users to investigate integration issues!
+
 ---
 
-I find it interesting to explore the new approaches to building systems that have arrived with AI services, especially being able to leverage so much out-of-the-box with Azure AI Services.
+I find it interesting to explore the new approaches to building solutions that have arrived with AI services, especially being able to leverage so much out-of-the-box with Azure AI Services.
