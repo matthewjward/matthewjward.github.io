@@ -6,11 +6,11 @@ thumbnail-img: ""
 tags: genai logicapps
 ---
 
-We build a lot of integration solutions. These solutions focus on moving data from one system to another. Often this is transitory in nature, an integration is about the movement of data, rather than about making a change to a system.
+We build a lot of integration solutions. These solutions focus on moving data from one system to another. Often this is transitory in nature, an integration is about the movement of data, rather than about making a change to one particular system.
 
 ![System integration](/assets/images/citizen-ops/integration.png)
 
-A failed integration does not leave a particular system in an error state, but it likely does leave your overall organisation in more abstract error state. How do we become aware that a failed integration has happened? How do we investigate and remedy the situation?
+A failed integration usuallt does not leave a distinct system in an error state, but it likely does leave your overall organisation in more abstract error state. How do we become aware that a failed integration has happened? How do we investigate and remedy the situation?
 
 Today we would usually build a very technical integration dashboard. An operations engineer would use the dashboard to dig into the issue, understand what had caused the failure, and then pass that information on to a business user where necessary.
 
