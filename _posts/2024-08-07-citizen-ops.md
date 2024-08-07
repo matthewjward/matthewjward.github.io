@@ -7,11 +7,11 @@ share-img: "/assets/images/citizen-ops/thumb.png"
 tags: genai logicapps
 ---
 
-We build a lot of integration solutions. These solutions focus on moving data from one system to another. Often this is transitory in nature, an integration is about the movement of data, rather than about making a change to one particular system.
+We build a lot of integration solutions. These solutions focus on moving data from one system to another. Often this is transitory in nature, an integration is about the movement of data, rather than about a user making a change to one particular system. However, what happens when an integration fails?
 
 ![System integration](/assets/images/citizen-ops/integration.png)
 
-A failed integration usuallt does not leave a distinct system in an error state, but it likely does leave your overall organisation in more abstract error state. How do we become aware that a failed integration has happened? How do we investigate and remedy the situation?
+A failed integration usually does not visibly disrupt a system, but it likely does leave your overall organisation in more subtle state of error. How do we become aware that a failed integration has happened? How do we investigate and remedy the situation?
 
 Today we would usually build a very technical integration dashboard. An operations engineer would use the dashboard to dig into the issue, understand what had caused the failure, and then pass that information on to a business user where necessary.
 
@@ -20,7 +20,7 @@ Today we would usually build a very technical integration dashboard. An operatio
 
 ## Can we do better?
 
-Very often when an integration fails, it is a data problem. The receiving system may have different validation requirements on a field compared to the sending system, and what was acceptable to one system is not acceptble to the other. In my experience data isses are for more common than more technical issues, such as networking or authenitcation errors.
+Very often when an integration fails, it is a data problem. The receiving system may have different validation requirements on a field compared to the sending system, and what was acceptable to one system is not acceptable to the other. In my experience data isses are for more common than more technical issues, such as networking or authenitcation errors.
 
 Given that these errors are often better resolved by a business user than a technical person, I wondered if there is there a way to surface them in a more suitable fashion.
 
@@ -28,7 +28,7 @@ I envisioned a solution where a business user could ask a question such as "Why 
 
 ![The goal](/assets/images/citizen-ops/the-goal.png)
 
-Using Azure AI Services, Azure Integration Services, and a (very) simple web application, I was able to create such a solution!
+Using Azure AI Services, Azure Integration Services, and a (very) simple web application, we can achieve this vision!
 
 
 ## So how does it work?
