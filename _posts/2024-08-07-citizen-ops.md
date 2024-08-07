@@ -2,7 +2,7 @@
 layout: post
 title: "Enabling CitizenOps for Integration Workloads with Azure AI Services "
 cover-img: "/assets/images/citizen-ops/cover.png"
-thumbnail-img: ""
+thumbnail-img: "/assets/images/citizen-ops/thumb.png"
 tags: genai logicapps
 ---
 
